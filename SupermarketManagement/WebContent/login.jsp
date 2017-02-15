@@ -23,52 +23,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	<form action="/SupermarketManagement/AddGoodsServlet" method="post" enctype="multipart/form-data" name="form1"    >
-   			<table border="1" >
+   	<form action="/SupermarketManagement/LoginServlet" method="post" name="form1"    >
+   			<table border="1" width="30%" >
    				<tr>
 					<th colspan="2" align="center" >
-						添加商品
+						用户登录
 					</th>
 				</tr>   
 				<tr>
-					<td>商品名称:</td>
+					<td>用户名:</td>
 					<td><input type="text" name="name"   /><font color="red" >${requestScope.errors.name}</font></td>
 				</tr>
 				<tr>
-					<td>商品价格:</td>
-					<td><input type="text" name="price"  /><font color="red" >${requestScope.errors.password}</font></td>
+					<td>密码:</td>
+					<td><input type="password" name="password"  /><font color="red" >${requestScope.errors.password}</font></td>
 				</tr>
 				<tr>
-					<td>库存:</td>
-					<td><input type="text" name="pnum" /><font color="red" ></font></td>
-				</tr> 
-				<tr>
-					<td>类别:</td>
-					<td>
-						<select name="type" >
-							<option value="日用百货" >日用百货</option>
-							<option value="电子产品" >电子产品</option>
-							<option value="床上用品" >床上用品</option>
-						</select>
-					</td>
-				</tr>    
-				<tr>
-					<td>商品图片:</td>
-					<td><input type="file" name="img" /><font color="red" ></font></td>
-				</tr> 
-				<tr>
-					<td>商品描述:</td>
-					<td><textarea name="description" cols="50" rows="10"  ></textarea></td>
-				</tr> 
-				<tr>
 					<td colspan="2" align="center" >
-						<input type="submit" value="添加" />
+						<input type="submit" value="登录" />
+						<input type="button" value="注册" onclick="window.location.href='/SupermarketManagement/register.jsp'" />
 					</td>
 				</tr>   			
    			</table>
    		</form>
    		<font color="red">${requestScope.error }</font>
-   
-   		
   </body>
 </html>

@@ -89,7 +89,7 @@ public class AddGoodsServlet extends HttpServlet {
 				//调用service保存
 		gs.addGoods(goods);
 		//重定向到列表Servlet
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
+				response.sendRedirect(request.getContextPath()+"/ListServlet");
 						
 	}
 

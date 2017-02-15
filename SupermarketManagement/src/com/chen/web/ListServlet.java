@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.chen.bean.Goods;
+import com.chen.bean.User;
 import com.chen.service.GoodsService;
 import com.chen.service.impl.GoodsServiceImpl;
 
@@ -17,6 +18,11 @@ import net.sf.json.JSONArray;
 public class ListServlet extends HttpServlet {
 	private GoodsService gService=new GoodsServiceImpl();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User u=(User)request.getSession().getAttribute("user");
+		if(u==null){
+			response.sendRedirect("/login.jsp");
+			return;
+		}
 		//1根据service获得商品列表
 		List<Goods> list=gService.getAll();
 		//2将商品列表放入request域

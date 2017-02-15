@@ -58,6 +58,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<h1>商品列表</h1>
    	<table border="1" id="one" >
    	</table>
-   	<a href='/SupermarketManagement/index.jsp'> 返回主页</a><br>
   </body>
 </html>
