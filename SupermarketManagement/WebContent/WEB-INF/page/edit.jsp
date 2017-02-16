@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	<form action="/SupermarketManagement/EditServlet" method="post" enctype="multipart/form-data" name="form1"    >
+   	<form action="/SupermarketManagement/EditServlet" method="post" enctype="multipart/form-data" name="form1"    style= "background:url(images/timg.jpg) repeat;">
    			<table border="1" >
    				<tr>
 					<th colspan="2" align="center" >

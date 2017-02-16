@@ -3,49 +3,48 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html >
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'regist.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<title>Wopop</title>
+<link href="./Wopop_files/style_log.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./Wopop_files/style.css">
+<link rel="stylesheet" type="text/css" href="./Wopop_files/userpanel.css">
+<link rel="stylesheet" type="text/css" href="./Wopop_files/jquery.ui.all.css">
 
-  </head>
+</head>
+
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+<div class="login_logo"><img src="./Wopop_files/logo.png" width="196" height="46"></div>
+<div class="login_boder">
+
+<div class="login_padding" id="login_model">
+<form action="/SupermarketManagement/LoginServlet" method="post" name="form1"   >
+  <h2>USERNAME</h2>
+  <label>
+    <input type="text" id="username" name="name" class="txt_input txt_input2"  onfocus="if (value ==&#39;Your name&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;Your name&#39;}" value="Your name"><font color="red" >${requestScope.errors.name}</font>
+  </label>
+  <h2>PASSWORD</h2>
+  <label>
+    <input type="password" name="password" id="userpwd" class="txt_input"  onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}" value="******"><font color="red" >${requestScope.errors.password}</font>
+  </label>
+ 
+ <input type="submit" value="登录" />
+<input type="button" value="注册" onclick="window.location.href='/SupermarketManagement/register.jsp'" />
+ 
   
-  <body>
-   	<form action="/SupermarketManagement/LoginServlet" method="post" name="form1"    >
-   			<table border="1" width="30%" >
-   				<tr>
-					<th colspan="2" align="center" >
-						用户登录
-					</th>
-				</tr>   
-				<tr>
-					<td>用户名:</td>
-					<td><input type="text" name="name"   /><font color="red" >${requestScope.errors.name}</font></td>
-				</tr>
-				<tr>
-					<td>密码:</td>
-					<td><input type="password" name="password"  /><font color="red" >${requestScope.errors.password}</font></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center" >
-						<input type="submit" value="登录" />
-						<input type="button" value="注册" onclick="window.location.href='/SupermarketManagement/register.jsp'" />
-					</td>
-				</tr>   			
-   			</table>
-   		</form>
-   		<font color="red">${requestScope.error }</font>
-  </body>
-</html>
+
+
+
+
+
+<!--login_padding  Sign up end-->
+</div><!--login_boder end-->
+</div><!--login_m end-->
+ <br> <br>
+
+
+</form>
+<font color="red">${requestScope.error }</font>
+</body></html>

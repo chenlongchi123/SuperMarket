@@ -25,6 +25,7 @@ public class RegisterServlet extends HttpServlet {
 	//封装参数uer对象
 		User u=new User();
 		try {
+			request.setCharacterEncoding("UTF-8");
 			BeanUtils.populate(u, request.getParameterMap());
 		} catch (IllegalAccessException e) {	
 			e.printStackTrace();

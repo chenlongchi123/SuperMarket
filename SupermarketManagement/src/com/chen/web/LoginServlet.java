@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u=new User();
 		try {
+			request.setCharacterEncoding("UTF-8");
 			BeanUtils.populate(u, request.getParameterMap());
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			
