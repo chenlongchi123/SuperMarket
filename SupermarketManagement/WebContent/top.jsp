@@ -26,17 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</script>
 	</head>
 	<body>
-	<table border="0" width="100%">
+	<table border="0" width="100%" >
 		<tr>
-			<td colspan="3" background="white">
-				<img src="images/ny_top_img.gif" height="108"width="650"></img>
+			<td colspan="4" background="images/back.gif">
+				<img src="images/title.png" height="108"width="650"></img>
 			</td>
 		</tr>
 		<tr>
 			<td width="20%">当前位置：所有用户管理</td>
-			<td width="50%" align="right">
+			<td width="40%" align="right">
 			<marquee direction="right" >欢迎您,${sessionScope.user.name}</marquee></td>
-			<td width="20%"><span id="showDate"><span></td>	
+			<td width="30%"><span id="showDate"><span></td>	
 			<td width="10%"><a href="/SupermarketManagement/LogoutServlet" target="_parent">退出</a></td>
 		</tr>
 		

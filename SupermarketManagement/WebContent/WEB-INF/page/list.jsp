@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
   </head>
   
-  <body onload="fun1()" style= "background:url(images/timg.jpg) repeat;">
+  <body onload="fun1()" style= "background:url(images/main.png) repeat;">
    	<h1>商品列表</h1>
    	<table border="1" id="one" >
    	</table>
