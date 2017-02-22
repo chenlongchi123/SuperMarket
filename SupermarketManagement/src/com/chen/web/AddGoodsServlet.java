@@ -33,7 +33,10 @@ public class AddGoodsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Goods goods=new Goods();
+		request.setCharacterEncoding("UTF-8");
+		String format=request.getParameter("format");
 		Map<String, String[]> parameterMap=new HashMap<String,String[]>();
+		if("json".equals(format)){
 	//创建配置工厂
 		DiskFileItemFactory factory=new DiskFileItemFactory();
 		//创建解析器
@@ -90,6 +93,20 @@ public class AddGoodsServlet extends HttpServlet {
 		gs.addGoods(goods);
 		//重定向到列表Servlet
 				response.sendRedirect(request.getContextPath()+"/ListServlet");
+		}else {
+			request.setCharacterEncoding("UTF-8");
+			try {
+				BeanUtils.populate(goods, request.getParameterMap());
+				gs.addGoods(goods);
+				response.sendRedirect(request.getContextPath()+"/ListServlet");
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 						
 	}
 

@@ -6,14 +6,15 @@ public class Goods {
 	private double price;
 	private int pnum;
 	private String description;
+	private String type;
+	private String imgurl;
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	private String type;
-	private String imgurl;
+	
 	public int getId() {
 		return id;
 	}

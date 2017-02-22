@@ -35,7 +35,10 @@ public class EditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Goods goods=new Goods();
+		request.setCharacterEncoding("UTF-8");
 		Map<String, String[]> parameterMap=new HashMap<String,String[]>();
+		String format=request.getParameter("format");
+		if("json".equals(format)){
 	//创建配置工厂
 		DiskFileItemFactory factory=new DiskFileItemFactory();
 		//创建解析器
@@ -91,6 +94,21 @@ public class EditServlet extends HttpServlet {
 		gs.update(goods);
 		//重定向到列表servlet
 		response.sendRedirect(request.getContextPath()+"/ListServlet");
+		}else {
+			request.setCharacterEncoding("UTF-8");
+			try {
+				BeanUtils.populate(goods, request.getParameterMap());
+				gs.update(goods);
+				response.sendRedirect(request.getContextPath()+"/ListServlet");
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

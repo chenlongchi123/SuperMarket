@@ -73,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>   			
    			</table>
    			<input type="hidden" name="id" value="${requestScope.goods.id}">
+   			<input type="hidden" name="format" value="json">
    		</form>
    		<font color="red">${requestScope.error }</font>
   </body>

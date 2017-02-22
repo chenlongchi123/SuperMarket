@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		request.getSession().setAttribute("user", existU);
 		//根据结果，跳转到页面
+		response.setCharacterEncoding("UTF-8");
 		response.sendRedirect(request.getContextPath()+"/Main.html");
 	}
 
