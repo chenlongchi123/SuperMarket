@@ -47,4 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </form>
 <font color="red">${requestScope.error }</font>
+<img src="./images/gongzhonghao.jpg" width="100" height="100"/>
+<h7>扫描二维码关注官方公众号</h7>
+<img src="./images/app.png" width="100" height="120"/>
+
 </body></html>
