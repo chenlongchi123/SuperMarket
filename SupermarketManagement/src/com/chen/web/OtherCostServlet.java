@@ -22,65 +22,38 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 import com.chen.bean.Goods;
+import com.chen.bean.Othercost;
 import com.chen.service.GoodsService;
+import com.chen.service.OthercostService;
 import com.chen.service.impl.GoodsServiceImpl;
+import com.chen.service.impl.OthercostServiceImpl;
 import com.chen.utils.PathUtils;
 
 
 
-public class AddGoodsServlet extends HttpServlet {
-	GoodsService gs=new GoodsServiceImpl();
+public class OtherCostServlet extends HttpServlet {
+	OthercostService os=new OthercostServiceImpl();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Goods goods=new Goods();
+		Othercost othercost=new Othercost();
 		request.setCharacterEncoding("UTF-8");
 		String format=request.getParameter("format");
 		Map<String, String[]> parameterMap=new HashMap<String,String[]>();
-		if("json".equals(format)){
-	
-		/*
-		//调用beanutils将参数封装到goods对象中
-		try {
-			BeanUtils.populate(goods, parameterMap);
-		}  catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}*/
-			String name =request.getParameter("name");
-			String price =request.getParameter("price");
-			String pnum =request.getParameter("pnum");
-			String type =request.getParameter("type");
-			String img =request.getParameter("img");
-			String description =request.getParameter("description");
-			Double price1=Double.parseDouble(price);
-			int pnum1 = Integer.parseInt(pnum);
-			goods.setName(name);
-			goods.setPrice(price1);
-			goods.setPnum(pnum1);
-			goods.setType(type);
-			goods.setImgurl(img);
-			goods.setDescription(description);
+		
+		String odate=request.getParameter("odate");
+		String oname=request.getParameter("oname");
+		String money=request.getParameter("money");
+		Double money1=Double.parseDouble(money);
+		othercost.setMoney(money1);
+		othercost.setOdate(odate);
+		othercost.setOname(oname);
 		//校验=> 非空校验
 		
 				//调用service保存
-		gs.addGoods(goods);
+		os.addOthercost(othercost);
 		//重定向到列表Servlet
-				response.sendRedirect(request.getContextPath()+"/ListServlet?format=json");
-		}else {
-			request.setCharacterEncoding("UTF-8");
-			try {
-				BeanUtils.populate(goods, request.getParameterMap());
-				gs.addGoods(goods);
 				response.sendRedirect(request.getContextPath()+"/ListServlet");
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
 						
 	}
 

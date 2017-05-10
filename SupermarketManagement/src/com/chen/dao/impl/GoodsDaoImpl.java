@@ -149,6 +149,7 @@ public class GoodsDaoImpl implements GoodsDao {
 					
 					//执行sql
 					int rowcount=ps.executeUpdate();
+					
 					if(rowcount!=1){
 						throw new RuntimeException("修改商品失败！");
 					}

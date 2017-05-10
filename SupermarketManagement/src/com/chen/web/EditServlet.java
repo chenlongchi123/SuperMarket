@@ -39,64 +39,43 @@ public class EditServlet extends HttpServlet {
 		Map<String, String[]> parameterMap=new HashMap<String,String[]>();
 		String format=request.getParameter("format");
 		if("json".equals(format)){
-	//创建配置工厂
-		DiskFileItemFactory factory=new DiskFileItemFactory();
-		//创建解析器
-		ServletFileUpload upload=new ServletFileUpload(factory);
-		//解析request
-		List<FileItem> list=null;
-		try {
-			list =  upload.parseRequest(request);
-		} catch (FileUploadException e) {
-			throw new RuntimeException("您操作有误");
-		}
-		//遍历fileitem
-		if(list!=null){
-			for(FileItem item :list){
-				if (!item.isFormField()&&item.getSize()>0) {
-					//文件上传
-					//将文件保存到项目根目录下的upload文件夹下
-					//获得upload文件夹路径
-					String uploadPath=getServletContext().getRealPath("/upload");
-					//生成日期目录
-					String datePath=PathUtils.getDatePath(uploadPath);
-					//生成图片名称
-					String filename=UUID.randomUUID().toString();
-					//保存图片
-					InputStream iStream=item.getInputStream();
-					FileOutputStream oStream=new FileOutputStream(uploadPath+datePath+filename);
-					IOUtils.copy(iStream,oStream);
-					//保存访问路径到product对象中
-					goods.setImgurl("/upload"+datePath+filename);
-					iStream.close();
-					oStream.close();
-					item.delete();	
-				}else {
-					//是普通表单
-					//将每个普通表单项的键值对都获取到
-					String key=item.getFieldName();
-					String value = item.getString("UTF-8");
-					//将他们封装到Map中
-					parameterMap.put(key, new String[]{value});
-				}
-			}
-		}
-		//调用beanutils将参数封装到goods对象中
+	
+		/*//调用beanutils将参数封装到goods对象中
 		try {
 			BeanUtils.populate(goods, parameterMap);
 		}  catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-		}
+		}*/
+		String name =request.getParameter("name");
+		String price =request.getParameter("price");
+		String pnum =request.getParameter("pnum");
+		String type =request.getParameter("type");
+		String img =request.getParameter("img");
+		String description =request.getParameter("description");
+		String id =request.getParameter("id");
+		Double price1=Double.parseDouble(price);
+		int pnum1 = Integer.parseInt(pnum);
+		int id1 = Integer.parseInt(id);
+		goods.setName(name);
+		goods.setPrice(price1);
+		goods.setPnum(pnum1);
+		goods.setType(type);
+		goods.setImgurl(img);
+		goods.setDescription(description);
+		goods.setId(id1);
+		
 		//校验=> 非空校验
 		//调用service修改
 		gs.update(goods);
 		//重定向到列表servlet
-		response.sendRedirect(request.getContextPath()+"/ListServlet");
+		response.sendRedirect(request.getContextPath()+"/ListServlet?format=json");
+		
+		//request.getRequestDispatcher(request.getContextPath()+"/ListServlet").forward(request, response);
 		}else {
 			request.setCharacterEncoding("UTF-8");
-			try {
+		try {
 				BeanUtils.populate(goods, request.getParameterMap());
 				gs.update(goods);
 				response.sendRedirect(request.getContextPath()+"/ListServlet");
@@ -107,12 +86,11 @@ public class EditServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		doGet(request, response);
 	}
 

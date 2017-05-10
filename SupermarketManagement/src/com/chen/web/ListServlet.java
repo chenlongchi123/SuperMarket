@@ -35,8 +35,7 @@ public class ListServlet extends HttpServlet {
 		
 		//3×ª·¢µ½list.jsp
 		request.getRequestDispatcher("/WEB-INF/page/list.jsp").forward(request, response);
-		}
-		else{
+		}else {
             request.setAttribute("list", list);
             request.getRequestDispatcher("/list2.jsp").forward(request, response);
         }

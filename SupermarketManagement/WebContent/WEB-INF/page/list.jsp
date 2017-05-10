@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var good1 =  jsonArray[i++];
 				//创建td对象
 				var td = document.createElement("td");
-				td.innerHTML="<img src='/SupermarketManagement"+good1["imgurl"]+"' width='300' height='200' /><br><a href='/SupermarketManagement/ToEditServlet?id="+good1["id"]+"' >"+good1["name"]+"</a><br>"+good1["price"]+"元";
+				td.innerHTML="<br><a href='/SupermarketManagement/ToEditServlet?id="+good1["id"]+"' >"+good1["name"]+"</a><br>"+good1["price"]+"元";
 				//将td添加到tr中
 				tr.appendChild(td);
 				//判断,是否还有下一个商品
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							var good2 =  jsonArray[i++];
 							//创建td对象
 							var td2 = document.createElement("td");
-							td2.innerHTML="<img src='/SupermarketManagement"+good2["imgurl"]+"' width='300' height='200' /><br><a href='/SupermarketManagement/ToEditServlet?id="+good2["id"]+"' >"+good2["name"]+"</a><br>"+good2["price"]+"元";
+							td2.innerHTML="<br><a href='/SupermarketManagement/ToEditServlet?id="+good2["id"]+"' >"+good2["name"]+"</a><br>"+good2["price"]+"元";
 							//将td添加到tr中
 							tr.appendChild(td2);
 				}
