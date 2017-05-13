@@ -53,10 +53,13 @@ public class AddGoodsServlet extends HttpServlet {
 			String type =request.getParameter("type");
 			String img =request.getParameter("img");
 			String description =request.getParameter("description");
+			String price2 =request.getParameter("price2");
 			Double price1=Double.parseDouble(price);
+			Double price3=Double.parseDouble(price2);
 			int pnum1 = Integer.parseInt(pnum);
 			goods.setName(name);
 			goods.setPrice(price1);
+			goods.setPrice2(price3);
 			goods.setPnum(pnum1);
 			goods.setType(type);
 			goods.setImgurl(img);

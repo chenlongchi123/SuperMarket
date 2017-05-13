@@ -39,6 +39,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="text" name="price"  /><font color="red" >${requestScope.errors.price}</font></td>
 				</tr>
 				<tr>
+					<td>商品进价:</td>
+					<td><input type="text" name="price2"  /><font color="red" >${requestScope.errors.price}</font></td>
+				</tr>
+				<tr>
 					<td>库存:</td>
 					<td><input type="text" name="pnum" /><font color="red" ></font></td>
 				</tr> 

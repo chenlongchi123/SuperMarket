@@ -19,11 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script src="Calendar.js"></script>
+		<script language="javascript" type="text/javascript">		
+		var c=new Calendar("c");
+			document.write(c);
+		</script>
   </head>
   
   <body style= "background:url(images/main.png) repeat;">
-   	<form action="/SupermarketManagement/AddGoodsServlet" method="post" enctype="multipart/form-data" name="form1"    >
+   	<form action="/SupermarketManagement/SellGoodsServlet" method="post"  name="form1"    >
    			<table border="1" >
    				<tr>
 					<th colspan="2" align="center" >
@@ -31,12 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</th>
 				</tr>   
 				<tr>
-					<td>商品名称:</td>
-					<td><input type="text" name="name"   /><font color="red" >${requestScope.errors.name}</font></td>
+					<td>商品id:</td>
+					<td><input type="text" name="id"   /><font color="red" >${requestScope.errors.name}</font></td>
 				</tr>
 				<tr>
-					<td>出售数量</td>
-					<td><input type="text" name="price"  /><font color="red" >${requestScope.errors.password}</font></td>
+					<td>日期:</td>
+					<td><input type="text" name="odate" onfocus="c.show(this)" /> <font color="red" >${requestScope.errors.password}</font></td>
 				</tr>
 				
 				<tr>

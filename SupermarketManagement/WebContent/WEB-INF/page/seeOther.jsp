@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var good1 =  jsonArray[i++];
 				//创建td对象
 				var td = document.createElement("td");
-				td.innerHTML="<br><a href='/SupermarketManagement/ToEditServlet?id="+good1["id"]+"' >"+"货物名称：    "+good1["name"]+"</a><br>"+"货物价格：    "+good1["price"]+"元"+"<br>货物id：    "+good1["id"]+"<br>货物进价：    "+good1["price2"]+"元";
+				td.innerHTML="支出用途：    "+good1["oname"]+"<br>"+"支出金额：    "+good1["money"]+"元"+"<br>支出id：    "+good1["id"]+"<br>支出日期：    "+good1["odate"];
 				//将td添加到tr中
 				tr.appendChild(td);
 				//判断,是否还有下一个商品
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							var good2 =  jsonArray[i++];
 							//创建td对象
 							var td2 = document.createElement("td");
-							td2.innerHTML="<br><a href='/SupermarketManagement/ToEditServlet?id="+good2["id"]+"' >"+"货物名称：    "+good2["name"]+"</a><br>"+"货物价格：    "+good2["price"]+"元"+"<br>货物id：    "+good2["id"]+"<br>货物进价：    "+good1["price2"]+"元";
+							td2.innerHTML="支出用途：    "+good1["oname"]+"<br>"+"支出金额：    "+good1["money"]+"元"+"<br>支出id：    "+good1["id"]+"<br>支出日期：    "+good1["odate"];
 							//将td添加到tr中
 							tr.appendChild(td2);
 				}
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body onload="fun1()" style= "background:url(images/main.png) repeat;">
-   	<h1>商品列表</h1>
+   	<h1>支出费用历史清单</h1>
    	<table border="1" id="one" >
    	</table>
   </body>
