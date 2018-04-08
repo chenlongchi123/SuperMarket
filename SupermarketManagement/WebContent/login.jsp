@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="login_boder">
 
 <div class="login_padding" id="login_model">
-<form action="/SupermarketManagement/LoginServlet?format=json" method="post" name="form1"   >
+<form action="/SupermarketManagement/LoginServlet" method="post" name="form1"   >
   <h2>USERNAME</h2>
   <label>
     <input type="text" id="username" name="name" class="txt_input txt_input2"  onfocus="if (value ==&#39;Your name&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;Your name&#39;}" value="Your name"><font color="red" >${requestScope.errors.name}</font>

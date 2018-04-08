@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	<form action="/SupermarketManagement/EditServlet" method="post"  name="form1"    style= "background:url(images/main.png) repeat;">
+   	<form action="/SupermarketManagement/EditServlet" method="post" enctype="multipart/form-data" name="form1"    style= "background:url(images/main.png) repeat;">
    			<table border="1" >
    				<tr>
 					<th colspan="2" align="center" >
@@ -52,7 +52,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</select>
 					</td>
 				</tr>    
-				
+				<tr>
+					<td>商品图片:</td>
+					<td>
+					<img src="/SupermarketManagement${requestScope.goods.imgurl}" width="100" height="100">
+					<input type="file" name="img" />
+					<font color="red" ></font></td>
+				</tr> 
 				<tr>
 					<td>商品描述:</td>
 					<td><textarea name="description" cols="50" rows="10"  >

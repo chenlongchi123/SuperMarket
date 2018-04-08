@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body style= "background:url(images/main.png) repeat;">
-   	<form action="/SupermarketManagement/AddGoodsServlet" method="post" name="form1"    >
+   	<form action="/SupermarketManagement/AddGoodsServlet" method="post" enctype="multipart/form-data" name="form1"    >
    			<table border="1" >
    				<tr>
 					<th colspan="2" align="center" >
@@ -36,11 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>商品价格:</td>
-					<td><input type="text" name="price"  /><font color="red" >${requestScope.errors.price}</font></td>
-				</tr>
-				<tr>
-					<td>商品进价:</td>
-					<td><input type="text" name="price2"  /><font color="red" >${requestScope.errors.price}</font></td>
+					<td><input type="text" name="price"  /><font color="red" >${requestScope.errors.password}</font></td>
 				</tr>
 				<tr>
 					<td>库存:</td>
@@ -56,7 +52,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</select>
 					</td>
 				</tr>    
-				
+				<tr>
+					<td>商品图片:</td>
+					<td><input type="file" name="img" /><font color="red" ></font></td>
+				</tr> 
 				<tr>
 					<td>商品描述:</td>
 					<td><textarea name="description" cols="50" rows="10"  ></textarea></td>
@@ -67,7 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 				</tr>   			
    			</table>
-   			<input type="hidden" name="format" value="json">
    		</form>
    		<font color="red">${requestScope.error }</font>
    

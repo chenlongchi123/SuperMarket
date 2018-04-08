@@ -78,8 +78,6 @@ public class UserDaoImpl implements UserDao {
 						u.setSelectc(rSet.getString("selectc"));
 						u.setBirthday(rSet.getString("birthday"));
 						u.setPostal(rSet.getString("postal"));
-						u.setStatus(rSet.getString("status"));
-						u.setId(rSet.getInt("id"));
 						
 					}
 					return u;

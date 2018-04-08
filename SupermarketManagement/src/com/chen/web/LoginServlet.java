@@ -2,8 +2,6 @@ package com.chen.web;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.chen.bean.Cost;
 import com.chen.bean.User;
 import com.chen.service.UserService;
 import com.chen.service.impl.UserServiceImpl;
@@ -25,10 +22,6 @@ public class LoginServlet extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u=new User();
-		
-		String format=request.getParameter("format");
-		
-		
 		try {
 			request.setCharacterEncoding("UTF-8");
 			BeanUtils.populate(u, request.getParameterMap());
@@ -43,9 +36,8 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
-		if("json".equals(format)){
 		//调用service保存
-			User existU=null;
+		User existU=null;
 		try {
 			existU=uService.login(u);
 		} catch (Exception e) {
@@ -55,28 +47,9 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		request.getSession().setAttribute("user", existU);
-		if(existU.getStatus().trim().equals("a")){
-			//根据结果，跳转到页面
-			response.setCharacterEncoding("UTF-8");
-			response.sendRedirect(request.getContextPath()+"/Main.html");
-		}else {
-			//根据结果，跳转到页面
-			response.setCharacterEncoding("UTF-8");
-			response.sendRedirect(request.getContextPath()+"/Main2.html");
-		}
-		
-		}else {
-			List<User> list = new ArrayList<User>();
-			try {User existU=uService.login(u);
-			list.add(existU);
-			} catch (Exception e) {
-				return;
-			}
-            request.setAttribute("list", list);
-           request.getRequestDispatcher("/list6.jsp").forward(request, response);
-          
-        }
-		
+		//根据结果，跳转到页面
+		response.setCharacterEncoding("UTF-8");
+		response.sendRedirect(request.getContextPath()+"/Main.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
